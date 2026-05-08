@@ -2,7 +2,6 @@ import os
 import json
 
 tasks = []
-tasks_dict = {}
 task = ''
 priority = ''
 status = ''
@@ -14,6 +13,7 @@ else:
     task_List = []
 
 def add_Task():
+    tasks_dict = {}
     task = input("What is the task? ")
     tasks_dict["task"] = task
 
@@ -24,7 +24,7 @@ def add_Task():
     tasks_dict['status'] = status
 
     tasks.append(tasks_dict)
-    with open('task.json', 'w' ) as file:
+    with open('tasks.json', 'w' ) as file:
         json.dump(tasks, file)
 
 add_Task()
