@@ -27,4 +27,22 @@ def add_Task():
     with open('tasks.json', 'w' ) as file:
         json.dump(tasks, file)
 
-add_Task()
+
+def view_Task():
+    task = input("What task do you want to View? ")
+    for i in tasks:
+        if i["task"] == task:
+            print(f'Task: {i["task"]}, Priority: {i["priority"]}, Status: {i["status"]}' )
+
+option = input("Press 1 to add a task, Press 2 to view a taks, Press 3 to delete a task ")
+option = int(option)
+
+if isinstance(option, int):
+    if option == 1:
+        add_Task()
+    elif option == 2:
+        view_Task() 
+else:
+    option = input("Press 1 to add a task, Press 2 to view a taks, Press 3 to delete a task ")
+
+
