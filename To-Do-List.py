@@ -12,6 +12,16 @@ if os.path.exists('tasks.json'):
 else:
     task_List = []
 
+def mark_Task():
+    task = input("What tasks you want to change? ")
+    change_Task_To = input("What do you want to change the task to? ")
+
+    for i in tasks:
+        if i["task"] == task:
+            i["status"] = change_Task_To
+    with open('tasks.json', 'w' ) as file:
+        json.dump(tasks, file)
+
 def add_Task():
     tasks_dict = {}
     task = input("What is the task? ")
@@ -27,6 +37,14 @@ def add_Task():
     with open('tasks.json', 'w' ) as file:
         json.dump(tasks, file)
 
+def delete_Task():
+    task = input("What task do you want to delete?")
+    for i in tasks:
+        if i["task"] == task:
+            tasks.remove(i)
+    with open('tasks.json', 'w' ) as file:
+        json.dump(tasks, file)
+
 
 def view_Task():
     task = input("What task do you want to View? ")
@@ -34,15 +52,19 @@ def view_Task():
         if i["task"] == task:
             print(f'Task: {i["task"]}, Priority: {i["priority"]}, Status: {i["status"]}' )
 
-option = input("Press 1 to add a task, Press 2 to view a taks, Press 3 to delete a task ")
+option = input("Press 1 to add a task, Press 2 to view a taks, Press 3 to mark a task, Press 4 to Delete a task ")
 option = int(option)
 
 if isinstance(option, int):
     if option == 1:
         add_Task()
     elif option == 2:
-        view_Task() 
+        view_Task()
+    elif option == 3:
+        mark_Task() 
+    elif option == 4:
+        delete_Task()
 else:
-    option = input("Press 1 to add a task, Press 2 to view a taks, Press 3 to delete a task ")
+    option = input("Press 1 to add a task, Press 2 to view a taks, Press 3 to mark a task, Press 4 to Delete a task ")
 
 
