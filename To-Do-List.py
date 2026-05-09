@@ -16,7 +16,6 @@ def mark_Task():
     task_name = input("Which task do you want to change? ")
     task = input("Do you want to change the task, priority or status? ")
     change_Task_To = input("What do you want to change the task to? ")
-
     for i in tasks:
         if i["task"] == task_name:
             if task == "task":
@@ -25,6 +24,8 @@ def mark_Task():
                 i["priority"] = change_Task_To
             elif task == "status":
                 i["status"] = change_Task_To
+        else:
+            print("Not a valid input")
 
     with open('tasks.json', 'w' ) as file:
         json.dump(tasks, file)
